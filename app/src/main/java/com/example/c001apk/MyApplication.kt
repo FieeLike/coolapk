@@ -5,6 +5,9 @@ import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.c001apk.util.PrefManager
+import net.mikaelzero.mojito.Mojito
+import net.mikaelzero.mojito.loader.glide.GlideImageLoader
+import net.mikaelzero.mojito.view.sketch.SketchImageLoadFactory
 
 class MyApplication : Application() {
 
@@ -15,6 +18,11 @@ class MyApplication : Application() {
 
         AppCompatDelegate.setDefaultNightMode(PrefManager.darkTheme)
         //DynamicColors.applyToActivitiesIfAvailable(this)
+
+        Mojito.initialize(
+            GlideImageLoader.with(this),
+            SketchImageLoadFactory()
+        )
     }
 
     companion object {
